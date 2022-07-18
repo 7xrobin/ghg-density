@@ -9,7 +9,11 @@ interface Product {
   product_variable: string;
 }
 
-export function Menu() {
+interface MenuProps {
+  onProductSelect: Function;
+}
+
+export function Menu({ onProductSelect }: MenuProps) {
   const [products, setProducts] = useState<Product[]>();
 
   useEffect(() => {
@@ -18,7 +22,8 @@ export function Menu() {
         const response = await axios.get(
           `https://api.v2.emissions-api.org/api/v2/products.json`
         );
-        setProducts(response.data);
+        const productsArray: Product[] = response.data;
+        setProducts(productsArray);
       } catch (err) {
         console.log(err);
       }
@@ -26,14 +31,24 @@ export function Menu() {
     getData();
   }, []);
 
+  useEffect(() => {
+    products && onProductSelect(products[0].name);
+  }, [products]);
+
+  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    onProductSelect(e.target.value);
+  };
+
   return (
     <ul className={styles.menu}>
       <li>
         <label htmlFor="product-select">Product: </label>
-        <select name="products" id="product-select">
+        <select name="products" id="product-select" onChange={handleSelect}>
           {products &&
             products.map((product: Product) => (
-              <option key={product.name}>{product.name}</option>
+              <option key={product.name} value={product.name}>
+                {product.name}
+              </option>
             ))}
         </select>
       </li>
