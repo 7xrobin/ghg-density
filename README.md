@@ -2,23 +2,20 @@
 
 ## Intro
 
-Plan A helps companies monitor, reduce, and offset their carbon footprint, based on the data
-they input about their emissions. Though this gives individual companies visibility on their
-own emissions, it doesn’t give us a clear idea on our progress on a country level.
-This task addresses the other side of the problem; using satellite data to estimate the
-amount of GHG emissions in the atmosphere over time to measure our actual impact.
+This dashboard consists of a chart that displays the GHG emissions of Germany from the period 2019-02-01 to 2022-06-15.
+Is possible to select a GHG type to get its related data.
 
 ## Install
 
-It's recommended to install `yarn`:
+To install the application dependencies, use `yarn install`
 
-```
-npm install --global yarn
-```
+## Execute
 
-`npm` is also possible but you may run into peer dependency issues. You can get around them with the `--legacy-peer-deps` flag.
+To run the application locally in development mode, use `yarn start`
 
-To run the application, use `yarn install`
+### Testing
+
+- To execute the unit tests use `yarn test`
 
 ## Available Scripts
 
@@ -26,46 +23,13 @@ To run the application, use `yarn install`
 
 ### `yarn test`
 
-## Task
+## Data
 
-Your task is to create a single page dashboard that shows the density of a given GHG for Germany over a predefined date range, with the following requirements:
+This open-source API is being used to fetch the GHG type data: https://api.v2.emissions-api.org/ui/
 
-The user should be able to select the GHG type (hint: also referred to as product). Please use this API to source the GHG type data: https://api.v2.emissions-api.org/ui/
+## Styles
 
-> e.g. https://api.v2.emissions-api.org/api/v2/carbonmonoxide/average.json?country=DE&begin=2019-02-01&end=2022-06-15
-
-Additionally, the following information should be displayed on the page
-
-- Plan A logo (`/src/assets`)
-- The provided description (`src/App.tsx`)
-- Country (Germany)
-- The start (2019-02-01) and end date (2022-06-15)
-- A chart (using the Recharts library)
-
-## What we’re looking for
-
-### UX/layout
-
-- Feel free to use any CSS preprocessors
-- CSS organisation and best practices
-- Responsiveness
-- Accessibility (e.g. semantic HTML)
-
-### General software development best practice
-
-- Architecture
-- Coding style
-- Scalability
-- Readability
-
-### Testing
-
-- Include at least 1 test for the GHG type parameter selection
-
-## Output
-
-- Please create a private Github repository with your solution and share it with the Github users provided by our recruitment team.
-- Please replace this README with instructions on how to run your code locally
+To add CSS style is being used css-modules because it is efficient and it is scoped locally
 
 ## Libraries
 
@@ -73,5 +37,6 @@ Please use the following libraries for your solution.
 
 - [react](https://reactjs.org/)
 - [typescript](https://www.typescriptlang.org/)
+- [axios](https://axios-http.com/)
 - [recharts](https://recharts.org/en-US/)
 - [testing-library/react](https://testing-library.com/docs/react-testing-library/intro/)

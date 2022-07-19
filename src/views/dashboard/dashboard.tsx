@@ -6,9 +6,8 @@ import { Chart } from "../../components/chart";
 import { Menu } from "../../components/menu";
 import styles from "./dashboard.module.css";
 
-const DESCRIPTION = `This dashboard consist of the chart that displays GHG emissions of Germany 
-within the period of 2019-02-01 to 2022-06-15. You can select the the GHG type on the select input above.
-`;
+const DESCRIPTION = `This dashboard consists of a chart that displays the GHG emissions of Germany from the period 2019-02-01 to 2022-06-15. 
+You can select the GHG type on the select input above.`;
 
 export function Dashboard() {
   const [productSelected, setProductSelected] = useState<string>();
