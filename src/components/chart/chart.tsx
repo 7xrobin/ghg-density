@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { EverageData } from "../../types/interfaces";
 import {
   LineChart,
   Line,
@@ -11,12 +12,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-interface EverageData {
-  everage: string;
-  end: string;
-  start: string;
-}
-
 interface ChartProps {
   product?: string;
 }
@@ -24,22 +19,23 @@ interface ChartProps {
 export function Chart({ product }: ChartProps) {
   const [data, setData] = useState<EverageData[]>();
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.v2.emissions-api.org/api/v2/${product}/average.json?country=DE&begin=2019-02-01&end=2022-06-15`
-        );
-        const dataFormated = response.data.map((element: EverageData) => {
-          return { ...element, start: element.start.split("T")[0] };
-        });
-        setData(dataFormated);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    product && getData();
+  const getData = useCallback(async () => {
+    try {
+      const response = await axios.get(
+        `https://api.v2.emissions-api.org/api/v2/${product}/average.json?country=DE&begin=2019-02-01&end=2022-06-15`
+      );
+      const dataFormated = response.data.map((element: EverageData) => {
+        return { ...element, start: element.start.split("T")[0] };
+      });
+      setData(dataFormated);
+    } catch (err) {
+      console.log(err);
+    }
   }, [product]);
+
+  useEffect(() => {
+    product && getData();
+  }, [getData, product]);
 
   return (
     <ResponsiveContainer width="90%" height={300}>

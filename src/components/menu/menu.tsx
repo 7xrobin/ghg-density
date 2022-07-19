@@ -1,40 +1,12 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-
+import { Product } from "../../types/interfaces";
 import styles from "./menu.module.css";
 
-interface Product {
-  description: string;
-  name: string;
-  product_variable: string;
-}
-
 interface MenuProps {
+  products?: Product[];
   onProductSelect: Function;
 }
 
-export function Menu({ onProductSelect }: MenuProps) {
-  const [products, setProducts] = useState<Product[]>();
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.v2.emissions-api.org/api/v2/products.json`
-        );
-        const productsArray: Product[] = response.data;
-        setProducts(productsArray);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getData();
-  }, []);
-
-  useEffect(() => {
-    products && onProductSelect(products[0].name);
-  }, [products]);
-
+export function Menu({ products, onProductSelect }: MenuProps) {
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     onProductSelect(e.target.value);
   };
