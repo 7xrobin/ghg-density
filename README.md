@@ -31,6 +31,11 @@ This open-source API is being used to fetch the GHG type data: https://api.v2.em
 
 To add CSS style is being used css-modules because it is efficient and it is scoped locally
 
+## Warning
+
+The recharts <ResponsiveContainer> is [not working with React 18 render method](https://github.com/recharts/recharts/issues/2831).
+So it is being used the React 17 render for the App, which gives a warning on the console.
+
 ## Libraries
 
 Please use the following libraries for your solution.

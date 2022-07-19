@@ -8,3 +8,9 @@
   border: solid 1px var(--gray-light);
   padding: 1em;
 }
+
+.status {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
