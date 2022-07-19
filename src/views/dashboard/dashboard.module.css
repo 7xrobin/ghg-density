@@ -1,0 +1,10 @@
+.main {
+  padding: 0 2em;
+  max-width: 80%;
+  margin: auto;
+}
+
+.description {
+  border: solid 1px var(--gray-light);
+  padding: 1em;
+}

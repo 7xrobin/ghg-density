@@ -2,7 +2,13 @@
   background-color: var(--green-transparent);
   color: var(--green-dark);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   list-style: none;
-  padding: 20px;
+  padding: 2em;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.menu li {
+  flex-shrink: 0;
 }
