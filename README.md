@@ -25,7 +25,7 @@ To run the application locally in development mode, use `yarn start`
 
 ## Data
 
-This open-source API is being used to fetch the GHG type data: https://api.v2.emissions-api.org/ui/
+This open-source API is being used to fetch the GHG emission data: https://api.v2.emissions-api.org/ui/
 
 ## Styles
 

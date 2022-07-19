@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
 import type { EverageData, Product } from "../../types/interfaces";
 import { Header } from "../../components/header";
 import { Chart } from "../../components/chart";
